@@ -13,15 +13,16 @@ import collections
 import math
 import time
 
+
 parser = argparse.ArgumentParser()
-parser.add_argument("--input_dir", help="path to folder containing images")
-parser.add_argument("--mode", required=True, choices=["train", "test", "export"])
+parser.add_argument("--input_dir", help="path to folder containing images", default="c")
+parser.add_argument("--mode", required=True, choices=["train", "test", "export"], default="train")
 parser.add_argument("--output_dir", required=True, help="where to put output files")
 parser.add_argument("--seed", type=int)
 parser.add_argument("--checkpoint", default=None, help="directory with checkpoint to resume training from or use for testing")
 
 parser.add_argument("--max_steps", type=int, help="number of training steps (0 to disable)")
-parser.add_argument("--max_epochs", type=int, help="number of training epochs")
+parser.add_argument("--max_epochs", type=int, help="number of training epochs", default=200)
 parser.add_argument("--summary_freq", type=int, default=100, help="update summaries every summary_freq steps")
 parser.add_argument("--progress_freq", type=int, default=50, help="display progress every progress_freq steps")
 parser.add_argument("--trace_freq", type=int, default=0, help="trace execution every trace_freq steps")
@@ -46,7 +47,10 @@ parser.add_argument("--gan_weight", type=float, default=1.0, help="weight on GAN
 
 # export options
 parser.add_argument("--output_filetype", default="png", choices=["png", "jpeg"])
-a = parser.parse_args()
+# a = parser.parse_args()
+
+# print('COPY THIS: ',parser.parse_args())
+
 
 EPS = 1e-12
 CROP_SIZE = 256
